@@ -9,8 +9,8 @@ import { CombinedState } from 'reducers';
 import Layout from 'antd/lib/layout';
 import { Col, Row } from 'antd/lib/grid';
 import Title from 'antd/lib/typography/Title';
-import CVATLogo from 'components/common/cvat-logo';
-import SVGSigningBackground from '../../assets/signing-background.svg';
+import SigningLogo from './signing-logo';
+import SVGSigningBackground from '../../assets/signing-background-light.svg';
 
 interface SignInLayoutComponentProps {
     children: JSX.Element | JSX.Element[];
@@ -76,7 +76,7 @@ function SignInLayout(props: SignInLayoutComponentProps): JSX.Element {
             <Header className='cvat-signing-header'>
                 <Row className='cvat-signing-header-logo-wrapper' justify='center' align='middle'>
                     <Col {...logoSizes}>
-                        <CVATLogo />
+                        <SigningLogo />
                     </Col>
                 </Row>
             </Header>
