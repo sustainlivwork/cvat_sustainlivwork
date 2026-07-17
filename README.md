@@ -102,18 +102,41 @@ export CVAT_HOST=annotate.example.com
 docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build
 ```
 
-Because your proxy terminates TLS and forwards to Traefik over plain HTTP, it **must** send
-`X-Forwarded-Proto: https`. Traefik only honours that header from a trusted source
-(`TRAEFIK_ENTRYPOINTS_web_FORWARDEDHEADERS_TRUSTEDIPS` in `docker-compose.yml`). The default trusts
-Cloudflare's edge ranges — so a Cloudflare Tunnel or Cloudflare proxy works out of the box — plus
-Docker's private range. For any other proxy, override `TRAEFIK_TRUSTED_IPS` with its IP/CIDR:
+Because your proxy terminates TLS and forwards to Traefik over plain HTTP, Django must still be told
+the public scheme is `https` — otherwise it builds `http://` upload (TUS) URLs that browsers block as
+mixed content ([cvat-ai/cvat#4843](https://github.com/cvat-ai/cvat/issues/4843)). Set:
 
 ```bash
-export TRAEFIK_TRUSTED_IPS=10.0.0.0/8
+CVAT_PUBLIC_SCHEME=https
 ```
 
-Without this, Traefik rewrites the scheme to `http` and annotation (TUS) uploads break as mixed
-content ([cvat-ai/cvat#4843](https://github.com/cvat-ai/cvat/issues/4843)).
+A Traefik middleware (`cvat-xfp` in `docker-compose.yml`) then forces `X-Forwarded-Proto` to that
+value on every request. This is deliberate: the usual fix — trusting the proxy's IP via Traefik's
+`forwardedHeaders.trustedIPs` — is unreliable under Docker Desktop, which rewrites the source address
+of connections it proxies into the VM, so trust lists silently fail to match. Forcing the header
+needs no trust at all, and is correct whenever the instance is only reachable over HTTPS. Leave the
+variable unset for plain-HTTP localhost use.
+
+### Expose via Cloudflare Tunnel
+
+No inbound ports or TLS certificates needed — run a
+[Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/)
+(`cloudflared`) on the host and map a public hostname to CVAT:
+
+1. In the Cloudflare Zero Trust dashboard, add a public hostname for your tunnel (e.g.
+   `cvat.example.com`) pointing at **`http://localhost:8080`**.
+2. Create a `.env` file next to `docker-compose.yml` (it is gitignored and read by
+   `docker compose` automatically):
+
+   ```bash
+   CVAT_HOST=cvat.example.com
+   CVAT_PUBLIC_SCHEME=https
+   ```
+
+3. Apply: `./serverless.sh up -d` (recreates only the affected containers; data is untouched).
+
+CVAT is then live at `https://cvat.example.com`. Note that Traefik routes by hostname, so
+`http://localhost:8080` returns **404** once `CVAT_HOST` is set — use the public URL.
 
 ## Branding
 
@@ -162,7 +185,7 @@ occasional conflicts in the files we touched: the CI workflows, the docs pages w
 | CI | Jobs requiring credentials this repo doesn't have are removed: Docker Hub publish, S3/Allure reports, Codecov, PyPI, and cvat.ai cross-repo triggers. Build, unit / REST / e2e / Helm tests and linters are all retained. |
 | Branding | SustAInLivWork logo in the app header, on the login page, and as the favicon. Light login page. |
 | Launcher | `serverless.sh` added as the default launcher: `docker compose` with the base file, the dev overlay, and the Nuclio serverless overlay. Upstream leaves you to compose the overlays by hand. |
-| Proxy / TLS | Traefik's `web` entrypoint trusts `X-Forwarded-Proto` from Cloudflare + Docker ranges (`FORWARDEDHEADERS_TRUSTEDIPS`, overridable via `TRAEFIK_TRUSTED_IPS`), so HTTPS annotation (TUS) uploads work behind a TLS-terminating proxy ([cvat-ai/cvat#4843](https://github.com/cvat-ai/cvat/issues/4843)). Upstream ships no trusted-IPs default. |
+| Proxy / TLS | A Traefik middleware (`cvat-xfp`) forces `X-Forwarded-Proto` to `CVAT_PUBLIC_SCHEME` (default `http`), so with `CVAT_PUBLIC_SCHEME=https` annotation (TUS) uploads work behind a TLS-terminating proxy or Cloudflare Tunnel ([cvat-ai/cvat#4843](https://github.com/cvat-ai/cvat/issues/4843)). Peer-IP trust was tested and does not work under Docker Desktop's source-address rewriting. |
 
 ## Licence & attribution
 

@@ -110,6 +110,14 @@ services:
         (PathPrefix(`/api/`) || PathPrefix(`/static/`) || PathPrefix(`/admin`)
           || PathPrefix(`/django-rq`))
       traefik.http.routers.cvat.entrypoints: web
+      # Force the scheme Django sees. Set CVAT_PUBLIC_SCHEME=https when a
+      # TLS-terminating proxy or tunnel fronts CVAT; otherwise Django builds
+      # http:// upload (TUS) URLs that browsers block as mixed content
+      # (cvat-ai/cvat#4843). Peer-IP trust (forwardedHeaders.trustedIPs) is not
+      # reliable here: Docker Desktop rewrites the source address of proxied
+      # connections, so the middleware sets the header unconditionally instead.
+      traefik.http.middlewares.cvat-xfp.headers.customrequestheaders.X-Forwarded-Proto: ${CVAT_PUBLIC_SCHEME:-http}
+      traefik.http.routers.cvat.middlewares: cvat-xfp@docker
     volumes:
       - cvat_data:/home/django/data
       - cvat_keys:/home/django/keys
@@ -259,6 +267,7 @@ services:
       traefik.http.services.cvat-ui.loadbalancer.server.port: "8000"
       traefik.http.routers.cvat-ui.rule: Host(`${CVAT_HOST:-localhost}`)
       traefik.http.routers.cvat-ui.entrypoints: web
+      traefik.http.routers.cvat-ui.middlewares: cvat-xfp@docker
     networks:
       - cvat
 
@@ -290,12 +299,6 @@ services:
 
       TRAEFIK_LOG_FORMAT: json
       TRAEFIK_ENTRYPOINTS_web_ADDRESS: :8080
-      # Trust X-Forwarded-* from the TLS-terminating proxy in front of Traefik so
-      # the original https scheme reaches Django; otherwise Traefik rewrites it to
-      # http and annotation (TUS) uploads break as mixed content (cvat-ai/cvat#4843).
-      # Default trusts Cloudflare's edge ranges (Cloudflare proxy or Tunnel) plus
-      # Docker's private range. Override TRAEFIK_TRUSTED_IPS for a different proxy.
-      TRAEFIK_ENTRYPOINTS_web_FORWARDEDHEADERS_TRUSTEDIPS: "${TRAEFIK_TRUSTED_IPS:-173.245.48.0/20,103.21.244.0/22,103.22.200.0/22,103.31.4.0/22,141.101.64.0/18,108.162.192.0/18,190.93.240.0/20,188.114.96.0/20,197.234.240.0/22,198.41.128.0/17,162.158.0.0/15,104.16.0.0/13,104.24.0.0/14,172.64.0.0/13,131.0.72.0/22,172.16.0.0/12}"
       TRAEFIK_PROVIDERS_DOCKER_EXPOSEDBYDEFAULT: "false"
       TRAEFIK_PROVIDERS_DOCKER_NETWORK: cvat
       TRAEFIK_PROVIDERS_FILE_DIRECTORY: /etc/traefik/rules
