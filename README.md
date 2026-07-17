@@ -102,6 +102,19 @@ export CVAT_HOST=annotate.example.com
 docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build
 ```
 
+Because your proxy terminates TLS and forwards to Traefik over plain HTTP, it **must** send
+`X-Forwarded-Proto: https`. Traefik only honours that header from a trusted source
+(`TRAEFIK_ENTRYPOINTS_web_FORWARDEDHEADERS_TRUSTEDIPS` in `docker-compose.yml`). The default trusts
+Cloudflare's edge ranges — so a Cloudflare Tunnel or Cloudflare proxy works out of the box — plus
+Docker's private range. For any other proxy, override `TRAEFIK_TRUSTED_IPS` with its IP/CIDR:
+
+```bash
+export TRAEFIK_TRUSTED_IPS=10.0.0.0/8
+```
+
+Without this, Traefik rewrites the scheme to `http` and annotation (TUS) uploads break as mixed
+content ([cvat-ai/cvat#4843](https://github.com/cvat-ai/cvat/issues/4843)).
+
 ## Branding
 
 The branding assets are checked into the tree and used as-is — no build step is required. Three
@@ -149,6 +162,7 @@ occasional conflicts in the files we touched: the CI workflows, the docs pages w
 | CI | Jobs requiring credentials this repo doesn't have are removed: Docker Hub publish, S3/Allure reports, Codecov, PyPI, and cvat.ai cross-repo triggers. Build, unit / REST / e2e / Helm tests and linters are all retained. |
 | Branding | SustAInLivWork logo in the app header, on the login page, and as the favicon. Light login page. |
 | Launcher | `serverless.sh` added as the default launcher: `docker compose` with the base file, the dev overlay, and the Nuclio serverless overlay. Upstream leaves you to compose the overlays by hand. |
+| Proxy / TLS | Traefik's `web` entrypoint trusts `X-Forwarded-Proto` from Cloudflare + Docker ranges (`FORWARDEDHEADERS_TRUSTEDIPS`, overridable via `TRAEFIK_TRUSTED_IPS`), so HTTPS annotation (TUS) uploads work behind a TLS-terminating proxy ([cvat-ai/cvat#4843](https://github.com/cvat-ai/cvat/issues/4843)). Upstream ships no trusted-IPs default. |
 
 ## Licence & attribution
 
