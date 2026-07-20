@@ -41,6 +41,14 @@ Create an administrator:
 
 Then sign in at <http://localhost:8080>.
 
+### User accounts
+
+Public self-registration is **disabled** in this fork: there is no "Create an account" page, and the
+`/api/auth/register` endpoint is not mounted. All accounts are created by an administrator — either
+with `createsuperuser` as above, or in the Django admin panel at `<your CVAT URL>/admin`
+(Authentication and Authorization → Users → Add user). Password change and reset for existing
+accounts still work as in stock CVAT.
+
 Stop the stack (add `-v` to also delete the database volume — this destroys all users and
 annotations):
 
@@ -146,7 +154,7 @@ assets carry the SustAInLivWork logo:
 | Asset | Used for |
 | --- | --- |
 | `cvat/apps/engine/static/logo.svg` | App header — a one-line horizontal wordmark, derived by re-laying the source's three stacked lines onto a single baseline (the header slot is only 32px tall, where the stacked lockup would be illegible). Served via the `LOGO_FILENAME` Django setting. |
-| `cvat-ui/src/assets/sustainlivwork-stacked.svg` | Login/register page — the full stacked lockup. |
+| `cvat-ui/src/assets/sustainlivwork-stacked.svg` | Login page — the full stacked lockup. |
 | `cvat-ui/src/assets/favicon.svg` | Browser tab — the teal `AI` mark alone. |
 
 Brand colours: black `#000000`, teal `#00B394`.
@@ -184,6 +192,7 @@ occasional conflicts in the files we touched: the CI workflows, the docs pages w
 | --- | --- |
 | CI | Jobs requiring credentials this repo doesn't have are removed: Docker Hub publish, S3/Allure reports, Codecov, PyPI, and cvat.ai cross-repo triggers. Build, unit / REST / e2e / Helm tests and linters are all retained. |
 | Branding | SustAInLivWork logo in the app header, on the login page, and as the favicon. Light login page. |
+| Accounts | Public self-registration is disabled: the `/api/auth/register` endpoint is not mounted (`cvat/apps/iam/urls.py`), and the UI hides the "Create an account" page automatically because it checks the server schema for that endpoint. Accounts are created by administrators (Django admin panel or `createsuperuser`). Upstream unit tests for registration are skipped; upstream REST/e2e suites that self-register test users will fail. |
 | Launcher | `serverless.sh` added as the default launcher: `docker compose` with the base file, the dev overlay, and the Nuclio serverless overlay. Upstream leaves you to compose the overlays by hand. |
 | Proxy / TLS | A Traefik middleware (`cvat-xfp`) forces `X-Forwarded-Proto` to `CVAT_PUBLIC_SCHEME` (default `http`), so with `CVAT_PUBLIC_SCHEME=https` annotation (TUS) uploads work behind a TLS-terminating proxy or Cloudflare Tunnel ([cvat-ai/cvat#4843](https://github.com/cvat-ai/cvat/issues/4843)). Peer-IP trust was tested and does not work under Docker Desktop's source-address rewriting. |
 
