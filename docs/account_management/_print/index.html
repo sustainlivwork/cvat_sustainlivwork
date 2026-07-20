@@ -1,0 +1,1261 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.110.0">
+<link rel="canonical" type="text/html" href="https://docs.cvat.ai/docs/account_management/">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>Account Management | CVAT</title>
+<meta name="description" content="Manage your CVAT account settings, team invitations, and subscriptions.">
+<meta property="og:title" content="Account Management" />
+<meta property="og:description" content="Manage your CVAT account settings, team invitations, and subscriptions." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://docs.cvat.ai/docs/account_management/" /><meta property="og:site_name" content="CVAT" />
+<meta itemprop="name" content="Account Management">
+<meta itemprop="description" content="Manage your CVAT account settings, team invitations, and subscriptions."><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Account Management"/>
+<meta name="twitter:description" content="Manage your CVAT account settings, team invitations, and subscriptions."/>
+
+
+
+
+<link rel="preload" href="/scss/main.min.6a2b8c5c503f2ae1f03c0ffdfd2621b9edb0d4fd46b36f4be8c40d7eeb7b6a86.css" as="style">
+<link href="/scss/main.min.6a2b8c5c503f2ae1f03c0ffdfd2621b9edb0d4fd46b36f4be8c40d7eeb7b6a86.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+  integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/css/prism.css"/>
+<style>
+     
+    .td-content a:not(.btn):not(.nav-link) {
+      color: #000000 !important;
+      text-decoration: underline;
+    }
+    .td-content a:not(.btn):not(.nav-link):hover,
+    .td-content a:not(.btn):not(.nav-link):focus {
+      color: #f97526 !important;
+      text-decoration: underline;  
+    }
+  </style>
+<style>
+     
+    .td-breadcrumbs a {
+      color: #000000 !important;
+      text-decoration: none !important;
+    }
+    .td-breadcrumbs a:hover,
+    .td-breadcrumbs a:focus {
+      color: #f97526 !important;
+      text-decoration: none !important;
+    }
+
+     
+    .td-sidebar a.td-sidebar-link {
+      color: #000000 !important;
+      text-decoration: none !important;
+    }
+    .td-sidebar a.td-sidebar-link:hover,
+    .td-sidebar a.td-sidebar-link:focus {
+      color: #f97526 !important;
+      text-decoration: none !important;
+    }
+     
+    .td-sidebar .td-sidebar-nav-active-item,
+    .td-sidebar a.td-sidebar-link.active,
+    .td-sidebar a.td-sidebar-link.active:hover {
+      color: #f97526 !important;
+    }
+
+     
+    .td-sidebar-toc a {
+      color: #000000 !important;
+      text-decoration: none !important;
+    }
+    .td-sidebar-toc a:hover,
+    .td-sidebar-toc a:focus {
+      color: #f97526 !important;
+      text-decoration: none !important;
+    }
+
+     
+    .td-page-meta a {
+      color: #000000 !important;
+      text-decoration: none !important;
+    }
+    .td-page-meta a:hover,
+    .td-page-meta a:focus {
+      color: #f97526 !important;
+      text-decoration: underline;  
+    }
+     
+    .td-page-meta { display: none !important; }
+
+     
+  .td-toc::before {
+    content: "TABLE OF CONTENTS";    
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: .5rem;
+  }
+  </style>
+
+  </head>
+  <body class="td-section">
+    <header>
+      <nav class="td-navbar navbar-dark js-navbar-scroll">
+<div class="container-fluid flex-column flex-md-row">
+<a class="navbar-brand" href="/docs/"><span class="navbar-brand__logo navbar-logo"><svg width="80" height="15" viewBox="0 0 80 15" xmlns="http://www.w3.org/2000/svg"><path d="M6.63399 15C2.37083 15 0 12.5333.0 7.48889.0 2.46667 2.34908.0 6.63399.0H10.6576V2.62222H6.63399c-2.84935.0-4.0674 1.44445-4.0674 4.86667.0 3.44441 1.2398 4.88891 4.0674 4.88891H15.0638V15H6.63399z"/><path d="M22.412.0l4.8346 13.1004C27.7814 14.5415 28.8724 15 30.2842 15 31.7817 15 32.7657 14.476 33.3005 13.1004L38.3918.0H35.5895L30.9902 11.8559C30.8404 12.2052 30.6265 12.3581 30.2842 12.3581 29.942 12.3581 29.7067 12.2052 29.5783 11.8559L25.1929.0H22.412z"/><path d="M53.0989 3.1441C53.2487 2.79476 53.484 2.64192 53.8262 2.64192 54.1685 2.64192 54.4038 2.79476 54.5322 3.1441L58.9176 15h2.8023L56.8425 1.89956C56.3291.524017 55.3451.0 53.8476.0 52.3288.0 51.3448.524017 50.81 1.89956L45.74 15h2.781L53.0989 3.1441z"/><path d="M69.0681.0V2.5665H73.2661V15H75.802V2.5665H80V0H69.0681z"/></svg></span></a>
+<div class="td-navbar-nav-scroll ms-md-auto" style="height: auto;" id="main_navbar">
+  <ul class="navbar-nav d-flex flex-wrap" style="padding-bottom: 0;">
+    
+      
+        <li class="nav-item">
+          <a class="nav-link "
+             href="/docs/"
+             ><span>Docs</span></a>
+        </li>
+      
+    
+      
+        <li class="nav-item">
+          <a class="nav-link "
+             href="/docs/getting_started/overview/"
+             ><span>Quickstart</span></a>
+        </li>
+      
+    
+      
+        <li class="nav-item">
+          <a class="nav-link "
+             href="/docs/guides/"
+             ><span>Guides</span></a>
+        </li>
+      
+    
+      
+        <li class="nav-item">
+          <a class="nav-link "
+             href="https://app.cvat.ai/auth/login"
+             rel="noopener"><span>Sign in</span></a>
+        </li>
+      
+    
+      
+        <li class="nav-item dropdown">
+          <a
+          class="nav-link dropdown-toggle "
+          href="#"
+          id="nav-get-started"
+          data-bs-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-label="Toggle Get started dropdown"
+          onkeydown="if(event.key === ' ' || event.key === 'Enter'){ this.click(); }"
+        ><span>Get started</span></a>
+          <ul class="dropdown-menu" aria-labelledby="nav-get-started">
+            
+              <li>
+                <a class="dropdown-item"
+                   href="/docs/administration/community/basics/installation"
+                   >CVAT Сommunity</a>
+              </li>
+            
+              <li>
+                <a class="dropdown-item"
+                   href="https://app.cvat.ai/auth/register"
+                   rel="noopener">CVAT Online</a>
+              </li>
+            
+              <li>
+                <a class="dropdown-item"
+                   href="https://www.cvat.ai/sales#enterprise"
+                   rel="noopener">CVAT Enterprise</a>
+              </li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li class="nav-item">
+          <a class="nav-link "
+             href="/docs/getting_started/overview/#get-in-touch"
+             ><span>Contact us</span></a>
+        </li>
+      
+    <li class="nav-item dropdown d-none d-lg-block">
+      <div class="dropdown">
+  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">develop</a>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="/">Latest version</a></li>
+    <li><a class="dropdown-item" href="/v2.69.0">v2.69.0</a></li>
+    <li><a class="dropdown-item" href="/v2.68.0">v2.68.0</a></li>
+    <li><a class="dropdown-item" href="/v2.67.0">v2.67.0</a></li>
+    <li><a class="dropdown-item" href="/v2.66.0">v2.66.0</a></li>
+    <li><a class="dropdown-item" href="/v2.65.0">v2.65.0</a></li>
+    <li><a class="dropdown-item" href="/v2.64.0">v2.64.0</a></li>
+    </ul>
+</div></li>
+    </ul>
+</div>
+<div class="d-none d-lg-block">
+  <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/offline-search-index.22fb6a8fee9d814f762c8b2c23b321e1.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
+</div>
+
+</div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/docs/account_management/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">Account Management</h1>
+<div class="lead">Manage your CVAT account settings, team invitations, and subscriptions.</div>
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+    
+    
+	
+<li>1: <a href="#pg-7339e2cf689a34db89718e52e19713f1">Registration &amp; account access</a></li>
+
+
+    
+  
+    
+    
+	
+<li>2: <a href="#pg-5f70fe4b4baf39715a70b72bd6d80808">User roles</a></li>
+
+
+    
+  
+    
+    
+	
+<li>3: <a href="#pg-62c5f22fd8b4897a374f08d3993ce0c0">Organization</a></li>
+
+
+    
+  
+    
+    
+	
+<li>4: <a href="#pg-ef7585eca5af779feae50d1ee0a60f21">Subscription management</a></li>
+
+
+    
+  
+
+    </ul>
+
+
+<div class="content">
+      
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="">
+    
+	<h1 id="pg-7339e2cf689a34db89718e52e19713f1">1 - Registration &amp; account access</h1>
+    <div class="lead">CVAT registration and account access.</div>
+	<p>To start annotating in CVAT, you must create an account or log in to the existing one.</p>
+<p>Check out:</p>
+<ul>
+<li><a href="#user-registration">User registration</a></li>
+<li><a href="#account-access">Account access</a></li>
+<li><a href="#update-profile-information">Update profile information</a></li>
+<li><a href="#password-reset">Password reset</a></li>
+<li><a href="#change-password">Change password</a></li>
+</ul>
+<p>To create an account or log in, go to the <a href="https://app.cvat.ai/">CVAT Online</a> login page:</p>
+<p><img src="/images/image001.jpg" alt="CVAT Online login page"></p>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">Note</h4>
+
+    By default, authentication and registration with
+Google and GitHub work only for <a href="https://app.cvat.ai/">CVAT Online</a>.
+
+</div>
+
+<h2 id="user-registration">User registration</h2>
+<p>To register:</p>
+<ol>
+<li>
+<p>Select <strong>Create an account</strong>.</p>
+<p><img src="/images/image002.jpg" alt="Create account"></p>
+</li>
+<li>
+<p>Fill in all blank fields, accept terms of use, and
+select <strong>Create an account</strong>.</p>
+</li>
+</ol>
+<p><img src="/images/image003.jpg" alt="Account form"></p>
+<p><br>A username generates from the email automatically. You can edit it if needed.</p>
+<p><img src="/images/filling_email.gif" alt="Username generation"></p>
+<h2 id="account-access">Account access</h2>
+<p>To access your account:</p>
+<ol>
+<li>Go to the <a href="https://app.cvat.ai/auth/login">login page</a>.</li>
+<li>Enter username or email. The password field will appear.</li>
+<li>Enter the password and click <strong>Next</strong>.</li>
+</ol>
+<p>To log in with Google or GitHub, select the button with the service name.</p>
+<h2 id="update-profile-information">Update profile information</h2>
+<p>To update your profile information:</p>
+<ol>
+<li>Log in to your CVAT account.</li>
+<li>In the top right corner, select the username.</li>
+<li>Select <strong>Profile</strong>.</li>
+<li>On the <strong>Profile</strong> tab, update the <strong>First Name</strong>, <strong>Last Name</strong>,
+or <strong>Username</strong> fields.</li>
+<li>Select <strong>Save changes</strong>.</li>
+</ol>
+<h2 id="password-reset">Password reset</h2>
+<p>To reset password:</p>
+<ol>
+<li>
+<p>Go to the <a href="https://app.cvat.ai/">CVAT Online</a> page and select
+<strong>Forgot password?</strong></p>
+<p><img src="/images/reset-password.jpg" alt="Reset password"></p>
+</li>
+<li>
+<p>Enter email you used for registration and select <strong>Send</strong>.</p>
+</li>
+<li>
+<p>Open email and select on the link from CVAT.</p>
+</li>
+<li>
+<p>Enter new password in both fields and select <strong>Change password</strong>.</p>
+<p><img src="/images/reset-password-01.jpg" alt="Reset password"></p>
+</li>
+</ol>
+<h2 id="change-password">Change password</h2>
+<p>To change password:</p>
+<ol>
+<li>
+<p>Log in to your CVAT account.</p>
+</li>
+<li>
+<p>In the top right corner, select the username.</p>
+</li>
+<li>
+<p>Select <strong>Profile</strong>.</p>
+</li>
+<li>
+<p>Open the <strong>Security</strong> tab.</p>
+</li>
+<li>
+<p>Select <strong>Change password</strong> and follow the instructions on the screen.</p>
+<p><img src="/images/change_password.png" alt="Reset password"></p>
+</li>
+</ol>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-5f70fe4b4baf39715a70b72bd6d80808">2 - User roles</h1>
+    
+	<p>CVAT offers two distinct types of roles:</p>
+<ul>
+<li><strong>Global Roles</strong>: These are universal roles that apply to the entire system. Anyone who logs into the CVAT
+platform is automatically assigned a global role. It sets the basic permissions that every registered user
+has across CVAT, regardless of their specific tasks or responsibilities.</li>
+<li><strong>Organization Roles</strong>: These roles determine what a user can do within the Organization,
+allowing for more tailored access based on the user’s specific duties and responsibilities.</li>
+</ul>
+<p>Organization roles complement global roles by determining the
+visibility of different resources for example, tasks or jobs.</p>
+<p><strong>Limits</strong>: Limits are applicable to all users of CVAT Online
+using the <a href="https://www.cvat.ai/pricing/cvat-online"><strong>Free plan</strong></a> and can be lifted upon
+<a href="/docs/account_management/subscription-management/"><strong>choosing a subscription</strong></a>.</p>
+<p>All roles are predefined and cannot be modified through the user interface.
+However, within the <em>self-hosted solution</em>, roles can be adjusted using <code>.rego</code>
+files stored in <code>cvat/apps/*/rules/</code>.
+Rego is a declarative language employed for defining
+OPA (Open Policy Agent) policies, and its syntax is detailed
+in the <a href="https://www.openpolicyagent.org/docs/latest/policy-language/"><strong>OPA documentation</strong></a>.</p>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">Note</h4>
+
+    Once you&rsquo;ve made changes to the <code>.rego</code> files, you must
+rebuild and restart the Docker Compose for those changes to be applied.
+In this scenario, be sure to include the <code>docker-compose.dev.yml</code> compose
+configuration file when executing the Docker Compose command.
+
+</div>
+
+<p>See:</p>
+<ul>
+<li><a href="#global-roles-in-cvat">Global roles in CVAT</a></li>
+<li><a href="#organization-roles-in-cvat">Organization roles in CVAT</a></li>
+<li><a href="#job-stage">Job Stage</a></li>
+</ul>
+<h2 id="global-roles-in-cvat">Global roles in CVAT</h2>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">Note</h4>
+
+    Global roles can be adjusted only on self-hosted solution.
+
+</div>
+
+<p>CVAT has implemented three Global roles, categorized as user Groups. These roles are:</p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Administrator</strong></td>
+<td>An administrator possesses unrestricted access to the CVAT instance and all activities within this instance. The administrator has visibility over all tasks and projects, with the ability to modify or manage each comprehensively. This role is exclusive to self-hosted instances, ensuring comprehensive oversight and control.</td>
+</tr>
+<tr>
+<td><strong>User <br>(default role)</strong></td>
+<td>A User is a default role who is assigned to any user who is registered in CVAT*. Users can view and manage all tasks and projects within their registered accounts, but their activities are subject to specific limitations, see Free plan. <br><br>* If a user, that did not have a CVAT account, has been invited to the organization by the organization owner or maintainer, it will be automatically assigned the Organization role and will be subject to the role&rsquo;s limitations when operating within the Organization.</td>
+</tr>
+<tr>
+<td><strong>Worker</strong></td>
+<td>Workers are limited to specific functionalities and do not have the permissions to create tasks, assign roles, or perform other administrative actions. Their activities are primarily focused on viewing and interacting with the content within the boundaries of their designated roles (validation or annotation of the jobs).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="organization-roles-in-cvat">Organization roles in CVAT</h2>
+<p>Organization Roles are available only within the
+<a href="/docs/account_management/organization/"><strong>CVAT Organization</strong></a>.</p>
+<p><img src="/images/user-roles.png" alt="Organization Roles"></p>
+<p>Organization roles are assigned when users are invited to the Organization.</p>
+<p><img src="/images/org-roles.png" alt="Organization Roles"></p>
+<p>There are the following roles available in CVAT:</p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Owner</strong></td>
+<td>The Owner is the person who created the Organization. The Owner role is assigned to the creator of the organization by default. This role has maximum capabilities and cannot be changed or assigned to the other user. <br><br>The Owner has no extra restrictions in the organization and is only limited by the chosen organization plan (see <a href="https://www.cvat.ai/pricing/cloud">Free and Team</a> plans). <br><br>Owners can invite other users to the Organization and assign roles to the invited users so the team can collaborate.</td>
+</tr>
+<tr>
+<td><strong>Maintainer</strong></td>
+<td>The maintainer is the person who can invite users to organization, create and update tasks and jobs, and see all tasks within the organization. Maintainer has complete access to Cloud Storages, and the ability to modify members and their roles.</td>
+</tr>
+<tr>
+<td><strong>Supervisor</strong></td>
+<td>The supervisor is a manager role. Supervisor can create and assign jobs, tasks, and projects to the Organization members. Supervisor cannot invite new members and modify members roles.</td>
+</tr>
+<tr>
+<td><strong>Worker</strong></td>
+<td>Workers&rsquo; primary focus is actual annotation and reviews. They are limited to specific functionalities and has access only to the jobs assigned to them.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="job-stage">Job Stage</h2>
+<p>Job <strong>Stage</strong> can be assigned to any team member.</p>
+<p><strong>Stages</strong> are not roles.</p>
+<p>Jobs can have an assigned user (with any role) and that <strong>Assignee</strong>
+will perform a <strong>Stage</strong> specific work which is to annotate,
+validate, or accept the job.</p>
+<p><img src="/images/job-stage.png" alt="Job stage"></p>
+<p>Job <strong>Stage</strong> can be:</p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Annotation</strong></td>
+<td>Provides access to annotation tools. Assignees will be able to see their assigned jobs and annotate them. By default, assignees with the <strong>Annotation</strong> stage cannot report annotation errors or issues.</td>
+</tr>
+<tr>
+<td><strong>Validation</strong></td>
+<td>Grants access to QA tools. Assignees will see their assigned jobs and can validate them while also reporting issues. By default, assignees with the <strong>Validation</strong> stage cannot correct errors or annotate datasets.</td>
+</tr>
+<tr>
+<td><strong>Acceptance</strong></td>
+<td>Does not grant any additional access or change the annotator’s interface. It just marks the job as done.</td>
+</tr>
+</tbody>
+</table>
+<p>Any <strong>Assignee</strong> can modify their assigned <strong>Stage</strong> specific
+functions via the annotation interface toolbar:</p>
+<p><img src="/images/change-stage.png" alt="Job stage change"></p>
+<ul>
+<li><strong>Standard</strong>: switches interface to <strong>Annotation</strong> mode.</li>
+<li><strong>Review</strong>: switches interface to the <strong>Validation</strong> mode.</li>
+</ul>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-62c5f22fd8b4897a374f08d3993ce0c0">3 - Organization</h1>
+    <div class="lead">Using organization in CVAT.</div>
+	<p><strong>Organization</strong> is a feature for teams of several users
+who work together on projects and share tasks.</p>
+<p>Create an <strong>Organization</strong>, invite your team members, and assign
+roles to make the team work better on shared tasks.</p>
+<p>See:</p>
+<ul>
+<li><a href="#personal-workspace">Personal workspace</a></li>
+<li><a href="#create-new-organization">Create new organization</a>
+<ul>
+<li><a href="#switching-between-organizations">Switching between organizations</a></li>
+</ul>
+</li>
+<li><a href="#organization-page">Organization page</a></li>
+<li><a href="#invite-members-into-organization-menu-and-roles">Invite members into organization: menu and roles</a>
+<ul>
+<li><a href="#inviting-members-to-organization">Inviting members to Organization</a></li>
+<li><a href="#invitations-list">Invitations list</a></li>
+<li><a href="#resending-and-removing-invitations">Resending and removing invitations</a></li>
+</ul>
+</li>
+<li><a href="#delete-organization">Delete organization</a></li>
+</ul>
+<h2 id="personal-workspace">Personal workspace</h2>
+<p>The account&rsquo;s default state is activated when no <strong>Organization</strong> is selected.</p>
+<p>If you do not select an <strong>Organization</strong>, the system links all new resources directly
+to your personal account, that inhibits resource sharing with others.</p>
+<p>When <strong>Personal workspace</strong> is selected, it will be marked with a tick in the menu.</p>
+<p><img src="/images/user_menu_organization.png" alt="User menu with selected &amp;ldquo;Personal workspace&amp;rdquo; in &amp;ldquo;Organization&amp;rdquo; option"></p>
+<h2 id="create-new-organization">Create new organization</h2>
+<p>To create an organization, do the following:</p>
+<ol>
+<li>
+<p>Log in to the CVAT.</p>
+</li>
+<li>
+<p>On the top menu, click your <strong>Username</strong> &gt; <strong>Organization</strong> &gt; <strong>+ Create</strong>.</p>
+<p><img src="/images/user_menu_organization_create.png" alt="User menu with highlighted &amp;ldquo;Create&amp;rdquo; button for creating organization"></p>
+</li>
+<li>
+<p>Fill in the following fields and click <strong>Submit</strong>.</p>
+<p><img src="/images/create_organization_form.png" alt="&amp;ldquo;Create a new organization&amp;rdquo; window with options and parameters"></p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Short name</strong></td>
+<td>A name of the organization that will be displayed in the CVAT menu.</td>
+</tr>
+<tr>
+<td><strong>Full name</strong></td>
+<td>Optional. Full name of the organization.</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>Optional. Description of organization.</td>
+</tr>
+<tr>
+<td><strong>Email</strong></td>
+<td>Optional. Your email.</td>
+</tr>
+<tr>
+<td><strong>Phone number</strong></td>
+<td>Optional. Your phone number.</td>
+</tr>
+<tr>
+<td><strong>Location</strong></td>
+<td>Optional. Organization address.</td>
+</tr>
+</tbody>
+</table>
+<p>Upon creation, the organization page will open automatically.</p>
+<p>For future access to your organization,
+navigate to <strong>Username</strong> &gt; <strong>Organization</strong></p>
+<h3 id="switching-between-organizations">Switching between organizations</h3>
+<p>If you have more than one <strong>Organization</strong>,
+it is possible to switch between these <strong>Organizations</strong> at any given time.</p>
+<p>Follow these steps:</p>
+<ol>
+<li>In the top menu, select your <strong>Username</strong> &gt; <strong>Organization</strong>.</li>
+<li>From the drop-down menu, under the <strong>Personal space</strong> section,
+choose the desired <strong>Organization</strong>.</li>
+</ol>
+<p><img src="/images/user_menu_select_org.png" alt="Example of user menu with available organizations"></p>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">Note</h4>
+
+    If you&rsquo;ve created more than 10 organizations,
+a <strong>Switch organization</strong> line will appear in the drop-down menu.
+
+</div>
+
+<p><img src="/images/switch_org.png" alt="Part of user menu with highlighted &amp;ldquo;Switch organization&amp;rdquo; button"></p>
+<p>Click on it to see the <strong>Select organization</strong> dialog, and select organization
+from drop-down list.</p>
+<p><img src="/images/select_org.png" alt="&amp;ldquo;Select organization&amp;rdquo; window"></p>
+<h3 id="transfer-tasks-and-projects-between-organizations">Transfer tasks and projects between organizations</h3>
+<p>You can move high-level resources (projects and individual tasks) between organizations and the personal workspace.</p>
+<p>To transfer a resource:</p>
+<ol>
+<li>Open the <strong>Actions</strong> menu of the corresponding task or project.</li>
+<li>In the <strong>Actions</strong> menu, select <strong>Organization</strong> (only visible if the resource can be transferred).</li>
+<li>Choose the destination workspace in the selector.</li>
+<li>A dialog will open. Confirm the transfer.</li>
+<li>If the resource has attached to a cloud storage, choose how CVAT should handle it:
+<ul>
+<li>The current cloud storages will be detached anyway as they are not available in another workspace.</li>
+<li><strong>Move &amp; Detach</strong>: After transferring, you can set a new cloud storage manually
+(only applicable for data source cloud storage in a task).
+Source and target cloud storages cannot be setup this way.</li>
+<li><strong>Move &amp; Auto Match</strong>: During the transfer, CVAT will try finding a
+cloud storage, matching similar parameters in the target workspace.
+This option is only available if the resource has source or target cloud storage configured.</li>
+</ul>
+</li>
+</ol>
+<img src="/images/project_org_transfer_1.png" style="max-width: 600px; padding: 16px;">
+<br />
+<img src="/images/project_org_transfer_2.png" style="max-width: 250px; padding: 16px;">
+<img src="/images/project_org_transfer_3.png" style="max-width: 350px; padding: 16px;">
+<h2 id="organization-page">Organization page</h2>
+<p><strong>Organization page</strong> is a place, where you can edit the <strong>Organization</strong> information
+and manage <strong>Organization</strong> members.</p>
+<p><img src="/images/org_page.png" alt="Example of organization page interface"></p>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">Note</h4>
+
+    In order to access the organization page, you must first activate
+the organization (see <a href="#switching-between-organizations">Switching between organizations</a>).
+Without activation, the organization page will remain inaccessible.
+<br>An organization is considered activated when it&rsquo;s ticked in the drop-down menu
+and its name is visible in the top-right corner under the username.
+
+</div>
+
+<p>To go to the <strong>Organization page</strong>, do the following:</p>
+<ol>
+<li>On the top menu, click your <strong>Username</strong> &gt; <strong>Organization</strong>.</li>
+<li>In the drop-down menu, select <strong>Organization</strong>.</li>
+<li>In the drop-down menu, click <strong>Settings</strong>.</li>
+</ol>
+<p><img src="/images/org_page_steps.png" alt="User menu with highlighted steps to open organization settings"></p>
+<h2 id="invite-members-into-organization-menu-and-roles">Invite members into organization: menu and roles</h2>
+<p>Invite members form is available from <a href="#organization-page">Organization page</a>.</p>
+<p>It has the following fields:</p>
+<p><img src="/images/invite_org_members.png" alt="Form for inviting users to organization"></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Email</strong></td>
+<td>Specifies the email address of the user who is being added to the <strong>Organization</strong>.</td>
+</tr>
+<tr>
+<td>Role drop-down list</td>
+<td>Defines the role of the user which sets the level of access within the <strong>Organization</strong>: <br><li><strong>Worker</strong>: Has access only to the tasks, projects, and jobs assigned to them. <li><strong>Supervisor</strong>: Can create and assign jobs, tasks, and projects to the <strong>Organization</strong> members. <li><strong>Maintainer</strong>: Has the same capabilities as the <strong>Supervisor</strong>, but with additional visibility over all tasks and projects created by other members, complete access to <strong>Cloud Storages</strong>, and the ability to modify members and their roles. <li><strong>Owner</strong>: role assigned to the creator of the organization by default. Has maximum capabilities and cannot be changed or assigned to the other user.</td>
+</tr>
+<tr>
+<td><strong>Invite more</strong></td>
+<td>Button to add another user to the <strong>Organization</strong>.</td>
+</tr>
+</tbody>
+</table>
+<p>Members of <strong>Organization</strong> will appear on the <strong>Organization page</strong>:</p>
+<p><img src="/images/org_members.png" alt="Organization page with opened menu for organization member roles"></p>
+<p>The member of the organization can leave the organization
+by going to <strong>Organization page</strong> &gt; <strong>Leave organization</strong>.</p>
+<p>The organization owner can remove members, by clicking on the <strong>Bin</strong> icon.</p>
+<h3 id="inviting-members-to-organization">Inviting members to Organization</h3>
+<p>To invite members to <strong>Organization</strong> do the following:</p>
+<ol>
+<li>
+<p>Go to the <a href="#organization-page"><strong>Organization page</strong></a>, and click <strong>Invite members</strong>.</p>
+</li>
+<li>
+<p>Fill in the form (see below).</p>
+<p><img src="/images/org_invite_form.png" alt="Invite user form with options and parameters"></p>
+</li>
+<li>
+<p>Click <strong>OK</strong>.</p>
+</li>
+<li>
+<p>The person being invited will receive an email with the link.</p>
+<p><img src="/images/invitation_to_org.png" alt="Invitation to organization email example"></p>
+</li>
+<li>
+<p>Person must click the link and:</p>
+<ol>
+<li>If the invitee does not have the CVAT account, then
+<a href="/docs/account_management/registration/#user-registration"><strong>set up an account</strong></a>.</li>
+<li>If the invitee has a CVAT account, then log in to the account.</li>
+</ol>
+</li>
+</ol>
+<h3 id="invitations-list">Invitations list</h3>
+<p>User can see the list of active invitations.</p>
+<p>To see the list, Go to <strong>Username</strong> &gt; <strong>Organization</strong> &gt; <strong>Invitations</strong>.</p>
+<p><img src="/images/invitations_list.png" alt="User menu with highlighted &amp;ldquo;Invitations&amp;rdquo; section"></p>
+<p>You will see the page with the list of invitations.</p>
+<p>You will also see pop-up notification the link to the page with
+invitations list.</p>
+<h3 id="resending-and-removing-invitations">Resending and removing invitations</h3>
+<p>The organization owner and maintainers can remove members, by
+clicking on the three dots, and selecting <strong>Remove invitation</strong></p>
+<p><img src="/images/resend_remove_invitation.png" alt="Organization page with opened menu for resending and removing invitations"></p>
+<h2 id="delete-organization">Delete organization</h2>
+<p>You can remove an organization that you created.</p>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">Note</h4>
+
+    Removing an organization will delete all related resources (annotations,
+jobs, tasks, projects, cloud storage, and so on).
+
+</div>
+
+<p>To remove an organization, do the following:</p>
+<ol>
+<li>Go to the <strong>Organization page</strong>.</li>
+<li>In the top-right corner click <strong>Actions</strong> &gt; <strong>Remove organization</strong>.</li>
+<li>Enter the short name of the organization in the dialog field.</li>
+<li>Click <strong>Remove</strong>.</li>
+</ol>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-ef7585eca5af779feae50d1ee0a60f21">4 - Subscription management</h1>
+    <div class="lead">How to manage your subscription</div>
+	<p>This article provides tips on how to effectively manage your
+CVAT Online subscriptions, including tracking expenses and canceling
+unnecessary subscriptions, to optimize your finances and save time.</p>
+<p>Whether you&rsquo;re a business owner or an individual,
+you&rsquo;ll learn how to take control of your subscriptions and manage them.</p>
+<p>See:</p>
+<ul>
+<li><a href="#available-paid-plans">Available paid plans</a>
+<ul>
+<li><a href="#monthly-plans">Monthly plans</a></li>
+<li><a href="#annual-plans">Annual plans</a></li>
+</ul>
+</li>
+<li><a href="#billing">Billing</a>
+<ul>
+<li><a href="#how-to-add-vattax-and-other-information-to-the-cvat-online-invoice-before-the-first-payment">How to add VAT/tax and other information to the CVAT Online invoice before the first payment?</a></li>
+<li><a href="#how-to-update-vattax-information-and-other-details-for-upcoming-invoices-from-cvat-online">How to update VAT/tax information and other details for upcoming invoices from CVAT Online?</a></li>
+<li><a href="#can-a-paid-invoice-be-modified">Can a paid invoice be modified?</a></li>
+<li><a href="#how-can-i-get-a-quote-before-i-subscribe-how-to-add-a-po-number-to-my-invoices">How can I get a quote before I subscribe? How to add a PO number to my invoices?</a></li>
+<li><a href="#can-you-sign-an-agreement-before-i-subscribe">Can you sign an agreement before I subscribe?</a></li>
+<li><a href="#can-you-handle-a-bank-transfer-with-30-day-payment-terms">Can you handle a bank transfer with 30-day payment terms?</a></li>
+<li><a href="#where-can-i-find-my-invoices">Where can I find my invoices?</a></li>
+<li><a href="#i-am-a-student-can-i-have-a-discount-or-free-access">I am a student, can I have a discount or free access?</a></li>
+</ul>
+</li>
+<li><a href="#payment-methods">Payment methods</a>
+<ul>
+<li><a href="#paying-with-bank-transfer">Paying with bank transfer</a></li>
+<li><a href="#how-to-change-the-payment-method">How to change the payment method?</a></li>
+</ul>
+</li>
+<li><a href="#adding-and-removing-team-members">Adding and removing team members</a></li>
+<li><a href="#change-plan">Change plan</a>
+<ul>
+<li><a href="#how-to-change-the-plan-from-solo-to-team">How to change the plan from Solo to Team?</a></li>
+<li><a href="#how-to-switch-from-a-monthly-subscription-to-an-annual-one">How to switch from a monthly subscription to an annual one?</a></li>
+</ul>
+</li>
+<li><a href="#can-i-subscribe-to-several-plans">Can I subscribe to several plans?</a></li>
+<li><a href="#cancel-plan">Cancel plan</a>
+<ul>
+<li><a href="#what-will-happen-to-my-data">What will happen to my data?</a></li>
+<li><a href="#how-to-cancel-any-plan">How to cancel any plan?</a></li>
+<li><a href="#how-can-i-get-a-refund">How can I get a refund?</a></li>
+</ul>
+</li>
+<li><a href="#plan-renewal">Plan renewal</a></li>
+<li><a href="#subscription-management-video-tutorial">Subscription management video tutorial</a></li>
+</ul>
+<h2 id="available-paid-plans">Available paid plans</h2>
+<p>This section outlines the paid plans available on CVAT Online.</p>
+<h3 id="monthly-plans">Monthly plans</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Solo</strong></td>
+<td>The <strong>Solo</strong> plan has a fixed price and is designed <strong>for personal use only</strong>. <br><br>It does not assume collaboration with team members and is not suitable for use within organizations, but it removes all other limitations of the <strong>Free</strong> plan. <Br><br> <strong>Note</strong>: Although it allows the creation of an organization and access for up to 2 members &ndash; it is <em>for trial purposes</em> only! <br>Organization and members <em>will have all the limitations of the <strong>Free</strong> plan</em>.</td>
+</tr>
+<tr>
+<td><strong>Team</strong></td>
+<td>The <strong>Team</strong> is <strong>for collaboration</strong>, it removes limitations of the <strong>Free</strong> plan for the whole organization, allowing you to share paid benefits with your colleagues. <br><br>The <strong>monthly payment for the plan depends on the number of team members you&rsquo;ve added</strong>. All limits of the <strong>Free</strong> plan will be removed. <Br><br> <strong>Note</strong>: The organization owner is also part of the team. So, if you have two annotators working, you&rsquo;ll need to pay for 3 seats (2 annotators + 1 organization owner).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="annual-plans">Annual plans</h3>
+<p>Whether you&rsquo;re a new user, or have a subscription to <strong>Team</strong> or <strong>Solo</strong> plan, <a href="https://www.cvat.ai/post/cvat-annual-plans">you can
+subscribe to our annual plan</a>
+and save up to 30% on CVAT Online usage costs.</p>
+<p>The annual subscription offers all the benefits of our paid plans but at
+a more affordable monthly rate.</p>
+<p>For more information, see <a href="#how-to-switch-from-monthly-subscription-to-annual">How to switch from monthly subscription to annual?</a></p>
+<h2 id="billing">Billing</h2>
+<p>This section describes the billing model and gives short a
+description of limitations for each plan.</p>
+<p>There are two types of subscriptions available for both the Solo
+and Team plans: monthly and annual.</p>
+<p>For more information,
+see: <a href="https://www.cvat.ai/post/new-pricing-plans">Pricing Plans</a></p>
+<h3 id="how-to-add-vattax-and-other-information-to-the-cvat-online-invoice-before-the-first-payment">How to add VAT/tax and other information to the CVAT Online invoice before the first payment?</h3>
+<p>To ensure VAT (tax) information and other relevant details are included on your
+CVAT Online invoices,
+it&rsquo;s important to add this information before making the first payment.</p>
+<p>Here’s how you can do it:</p>
+<ol>
+<li>Sign up for a CVAT Online account and log in.</li>
+<li>(Optional) If you add the VAT/tax number to the organization,
+first create an <a href="/docs/account_management/organization/">organization</a> and
+switch to an <strong>Organization</strong> account.</li>
+<li>Navigate to the top right corner, next to the nickname,
+click on the arrow &gt; upgrade to the plan.</li>
+<li>Switch on the <strong>I would like the invoice to include additional
+data (address, phone number, VAT information)</strong> toggle, select the
+best payment period for you, and click <strong>Get Started</strong>.</li>
+</ol>
+<p><img src="/images/add-invoice.png" alt="Stripe Link"></p>
+<ol start="5">
+<li>You will see the billing page:</li>
+</ol>
+<p><img src="/images/add-vat.png" alt="Stripe Link"></p>
+<ul>
+<li>Phone number <strong>(1)</strong>.</li>
+<li><strong>Billing Address</strong>: Enter the billing address you want to appear on the invoice
+   in the address field <strong>(2)</strong>.</li>
+<li><strong>VAT Information</strong> and <strong>Business Name</strong>: Select the checkbox <strong>I am purchasing as a business</strong> and enter
+your VAT and business name information <strong>(3)</strong>.</li>
+</ul>
+<ol start="6">
+<li>
+<p>Select checkbox <strong>I agree to refund policy</strong> <strong>(4)</strong>.</p>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">Note</h4>
+
+    Please read the <strong>Refund policy</strong> before selecting the checkbox.
+
+</div>
+
+</li>
+<li>
+<p>Click <strong>Pay &amp; Subscribe</strong>.</p>
+</li>
+</ol>
+<p>All information you&rsquo;ve added will appear on the billing page and in the invoice.</p>
+<p><img src="/images/sm-profile-upd-inf.png" alt="Stripe Payment Info"></p>
+<p>By following these steps, you can seamlessly add VAT and other crucial information to your
+invoices, making your financial transactions with CVAT Online transparent and compliant.</p>
+<h3 id="how-to-update-vattax-information-and-other-details-for-upcoming-invoices-from-cvat-online">How to update VAT/tax information and other details for upcoming invoices from CVAT Online?</h3>
+<p>In the top right corner, near the nickname, click on the arrow &gt; manage plan.</p>
+<p>You will see the Stripe page. Go to the <strong>Billing Information</strong> &gt; <strong>Update Information</strong>.</p>
+<p><img src="/images/sm-profile-upd-inf-2.png" alt="Stripe Payment Info"></p>
+<h3 id="can-a-paid-invoice-be-modified">Can a paid invoice be modified?</h3>
+<p>Once an invoice has been paid, it is not possible to modify it. This restriction is due to the
+limitations of the payment processing platform used, which in the case of CVAT Online,
+is <a href="https://stripe.com/">Stripe</a>.</p>
+<p>Stripe&rsquo;s policy dictates that revisions to an invoice can only be made before payment.
+For more comprehensive information on this policy, please refer to Stripe&rsquo;s official documentation
+on <a href="https://docs.stripe.com/invoicing/invoice-edits#:~:text=Stripe%20lets%20you%20revise%20a,Edit%20the%20invoice%20description.">invoice edits</a>
+at their website.</p>
+<h3 id="how-can-i-get-a-quote-before-i-subscribe-how-to-add-a-po-number-to-my-invoices">How can I get a quote before I subscribe? How to add a PO number to my invoices?</h3>
+<p>If you require a quote from CVAT Online for payment via bank transfer, certain criteria must be met:</p>
+<ul>
+<li>The <strong>total subscription cost must be $396 and up per year</strong>.</li>
+<li>Quotes are available exclusively <strong>for annual subscriptions</strong>.</li>
+</ul>
+<p>Should you meet these requirements, please write to <a href="mailto:support@cvat.ai">support@cvat.ai</a></p>
+<h3 id="can-you-sign-an-agreement-before-i-subscribe">Can you sign an agreement before I subscribe?</h3>
+<p>Sign of specific agreements and approvals are available if you meet specific criteria
+(the <strong>total subscription cost must be $10,000 and up per year</strong>), for more details contact <a href="mailto:support@cvat.ai">support@cvat.ai</a></p>
+<h3 id="can-you-handle-a-bank-transfer-with-30-day-payment-terms">Can you handle a bank transfer with 30-day payment terms?</h3>
+<p>Yes, it is available if you fit the quota criteria, for details contact <a href="mailto:support@cvat.ai">support@cvat.ai</a>.</p>
+<h3 id="where-can-i-find-my-invoices">Where can I find my invoices?</h3>
+<p>In the top right corner, near the nickname, click on the arrow &gt; manage plan.</p>
+<p>You will see the Stripe page.
+At the bottom of the page, you will see the <strong>Invoice History</strong> section with all invoices.</p>
+<p>Invoices are automatically sent to the account owner&rsquo;s address used for the registration.</p>
+<p>To see the invoice click on the <strong>Show Invoice Icon</strong><img src="/images/invoice-icon.png" alt="Stripe Invoice Icon"> icon.</p>
+<p><img src="/images/show-invoice.png" alt="Show Invoice"></p>
+<h3 id="i-am-a-student-can-i-have-a-discount-or-free-access">I am a student, can I have a discount or free access?</h3>
+<p>To consider your request for a discount, we&rsquo;d need a few details from you:</p>
+<ul>
+<li>A copy of your valid student ID or any document confirming your university affiliation.</li>
+<li>Your university advisor&rsquo;s contact details.</li>
+<li>The name and contact information of the dean of your faculty.</li>
+<li>A brief outline of your project plan. This helps us understand how we might collaborate
+ on a joint marketing statement highlighting your use of CVAT Online, and how it can benefit your project.</li>
+<li>We&rsquo;d also appreciate a positive LinkedIn post about your experience using CVAT Online,
+making sure to tag @CVAT.ai.</li>
+</ul>
+<p>All these details must be sent to <a href="mailto:support@cvat.ai">support@cvat.ai</a>. Once we have this
+information, we&rsquo;ll gladly offer you a 50% discount for one year.</p>
+<h2 id="payment-methods">Payment methods</h2>
+<p>This section describes how to change or add payment methods.</p>
+<h3 id="paying-with-bank-transfer">Paying with bank transfer</h3>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">Note</h4>
+
+    At the moment this method of payment
+works only with US banks.
+
+</div>
+
+<p>To pay with a bank transfer:</p>
+<ol>
+<li>Go to the <strong>Upgrade to Solo</strong>/<strong>Team plan</strong>&gt; <strong>Get started</strong>.</li>
+<li>Click <strong>US Bank Transfer</strong>.</li>
+<li>Upon successful completion of the payment, you will receive a receipt via email.</li>
+</ol>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">Note</h4>
+
+    The completion of the payment process may take up to three banking days.
+
+</div>
+
+<p><img src="/images/bank_transfer_payment.png" alt="Bank Transfer Payment"></p>
+<h3 id="how-to-change-the-payment-method">How to change the payment method?</h3>
+<p>In the top right corner, near the nickname, click on the arrow &gt; manage plan &gt; <strong>+Add Payment Method</strong></p>
+<p><img src="/images/update_payment_team.png" alt="Payment team"></p>
+<h2 id="adding-and-removing-team-members">Adding and removing team members</h2>
+
+
+<div class="alert alert-primary" role="alert">
+<h4 class="alert-heading">Note</h4>
+
+    <strong>Solo plan</strong> is <strong>for personal use only</strong>, you cannot add or remove team members.
+
+</div>
+
+<p><strong>Team plan</strong> is for collaboration. To add members to your
+<a href="/docs/account_management/organization/">Organization</a>,
+go to the <strong>Manage Team plan</strong> &gt; <strong>Update quantity</strong>.</p>
+<p><img src="/images/change_members_number_team.gif" alt="Add members"></p>
+<p>If you&rsquo;ve added a user <strong>before the current billing period ends</strong>,
+the payment will be prorated for the remaining time until the
+next billing cycle begins. From the following month onward,
+the full payment will be charged.</p>
+<p>In case you <strong>removed the user before the current billing period ends</strong>,
+funds will not be returned to your account,
+but next month you will pay less by the amount of unused funds.</p>
+<h2 id="change-plan">Change plan</h2>
+<h3 id="how-to-change-the-plan-from-solo-to-team">How to change the plan from Solo to Team?</h3>
+<p>The procedure is the same for both <strong>Solo</strong> and <strong>Team</strong> plans.</p>
+<p>If for some reason you want to change your plan, you need to:</p>
+<ol>
+<li>Unsubscribe from the previous plan.</li>
+<li>If you need a refund, contact us at <a href="mailto:support@cvat.ai">support@cvat.ai</a>.</li>
+<li>Subscribe to a new plan.</li>
+</ol>
+<h3 id="how-to-switch-from-a-monthly-subscription-to-an-annual-one">How to switch from a monthly subscription to an annual one?</h3>
+<p>If you have <strong>monthly subscription</strong>, and wish to switch to the
+<strong>Annual plan</strong>, please follow these steps:</p>
+<ol>
+<li>In the top-right corner, near the nickname, click on the arrow.</li>
+<li>Select <strong>Manage Solo</strong>/<strong>Team Plan</strong>.</li>
+<li>On the Stripe page that appears, click <strong>Update Plan</strong>.</li>
+</ol>
+<p><img src="/images/switch-to-annual.png" alt="Stripe Update Plan"></p>
+<ol start="4">
+<li>Choose <strong>Yearly</strong> and then click <strong>Continue</strong>.</li>
+</ol>
+<p><img src="/images/yearly-plan.png" alt="Stripe Yearly Plan"></p>
+<p>The price will be adjusted according to the number of members, selected in the
+<strong>Quantity</strong> field (if updated), taking into account the amount of money
+that was not spent in the current period.</p>
+<p>Upon payment, your subscription will be renewed and the start
+date will be reset to the day you switch to the new plan.</p>
+<h2 id="can-i-subscribe-to-several-plans">Can I subscribe to several plans?</h2>
+<p>Paid plans are not mutually exclusive.
+You can have several active subscriptions,
+for example, the <strong>Solo</strong> plan and several <strong>Team</strong>
+plans for different organizations.</p>
+<h2 id="cancel-plan">Cancel plan</h2>
+<p>This section describes how to cancel your CVAT subscription
+and what will happen to your data.</p>
+<h3 id="what-will-happen-to-my-data">What will happen to my data?</h3>
+<p>Once you have terminated your subscription, your data will remain
+accessible within the system for a month. During this period,
+you will be unable to add new tasks and free plan limits will be applied.</p>
+<p>In case you possess a substantial amount of data,
+it will be switched to read-only mode. It means
+you will not be able to save annotations, add any resources,
+and so on.</p>
+<p>Following the one month, you will receive a
+notification requesting you to either remove the
+excess data or it will be deleted automatically.</p>
+<h3 id="how-to-cancel-any-plan">How to cancel any plan?</h3>
+<p>To cancel the plan, in the top right corner, near the nickname,
+click on the arrow&gt; manage plan &gt; <strong>Cancel plan</strong></p>
+<p>Please, fill out the feedback form, to help us improve our platform.</p>
+<p><img src="/images/cancel-plan.png" alt="Cancel pro"></p>
+<h3 id="how-can-i-get-a-refund">How can I get a refund?</h3>
+<p>To understand if you are eligible for a refund,
+see <a href="https://www.cvat.ai/refund-policy">Refund policy</a>.</p>
+<ol>
+<li>Cancel the subscription before asking for a refund.</li>
+<li>Contact our support team at <a href="mailto:support@cvat.ai">support@cvat.ai</a>
+or use the &ldquo;Support&rdquo; option in the app.cvat.ai interface.</li>
+<li>Provide your account details and a brief explanation of the reason for the refund:
+<ul>
+<li>Send us your last invoice.</li>
+<li>Send us the username and e-mail address you’ve used to register in CVAT Online.</li>
+</ul>
+</li>
+</ol>
+<p>Our team will review your request. We may request additional information if needed.
+Once approved, the refund will be processed to your original
+payment method <a href="https://docs.stripe.com/refunds#tracing-refunds">within 5-10 business days</a>.</p>
+<h2 id="plan-renewal">Plan renewal</h2>
+<p>To renew your CVAT Online subscription, in the top right corner, near the nickname,
+click on the arrow&gt; manage plan &gt; <strong>Renew plan</strong>.</p>
+<h2 id="subscription-management-video-tutorial">Subscription management video tutorial</h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/AMPtbmqZKNY?si=2TLhdytDIlSJ3Fwd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+</div>
+
+
+
+    
+	
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      <footer class="bg-dark py-5 row d-print-none" style="min-height: 0">
+  <div class="container-fluid">
+    <div class="row align-items-center">
+      
+      <div class="col-12 col-lg-8 d-flex align-items-center justify-content-start">
+        <ul class="list-inline mb-0">
+          <li class="list-inline-item me-4">© 2026 CVAT.ai Corporation.</li>
+          <li class="list-inline-item me-4"><a class="text-white" href="https://www.cvat.ai/terms-of-use">Terms of Service</a></li>
+          <li class="list-inline-item me-4"><a class="text-white" href="https://www.cvat.ai/privacy">Privacy Policy</a></li>
+          <li class="list-inline-item me-4"><a class="text-white" href="https://www.cvat.ai/refund-policy">Refund Policy</a></li>
+          <li class="list-inline-item me-4"><a class="text-white" href="https://www.cvat.ai/fair-usage-policy">Fair Usage Policy</a></li>
+          <li class="list-inline-item me-4"><a class="text-white" href="https://status.cvat.ai">Status</a></li>
+        </ul>
+      </div>
+
+      
+      <div class="col-12 col-lg-4 d-flex align-items-center justify-content-lg-end justify-content-center mt-3 mt-lg-0">
+        
+        
+        
+<ul class="list-inline mb-0">
+  
+  <li class="list-inline-item mx-2 h3" data-bs-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
+    <a class="text-white" rel="noopener noreferrer" href="https://github.com/cvat-ai/cvat">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-bs-toggle="tooltip" data-placement="top" title="LinkedIn" aria-label="LinkedIn">
+    <a class="text-white" rel="noopener noreferrer" href="https://www.linkedin.com/company/cvat-ai/">
+      <i class="fab fa-linkedin"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-bs-toggle="tooltip" data-placement="top" title="Discord" aria-label="Discord">
+    <a class="text-white" rel="noopener noreferrer" href="https://discord.gg/fNR3eXfk6C">
+      <i class="fab fa-discord"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-bs-toggle="tooltip" data-placement="top" title="YouTube" aria-label="YouTube">
+    <a class="text-white" rel="noopener noreferrer" href="https://www.youtube.com/@cvat-ai">
+      <i class="fab fa-youtube"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+    </div>
+  </div>
+  
+
+
+<div id="cookie-consent-banner">
+  <p>
+    We use Google Analytics cookies to improve functionality and analyze traffic. You can change your preference at any time using the "Cookie Settings" link in the footer.
+  </p>
+  <div class="button-group">
+    <button onclick="acceptCookies()">Accept</button>
+    <button class="reject" onclick="rejectCookies()">Reject</button>
+  </div>
+</div>
+
+
+<script>
+window.GOOGLE_TAG_ID = 'G-GVSBK1DNK5';
+</script>
+
+
+<script defer src="/js/cookie-consent.min.93cb75ea0d8a602f1db231ed823839f4fc4c6fbfe6d98e78c702dbdf32e8ce95.js" integrity="sha256-k8t16g2KYC8dsjHtgjg59PxMb7/m2Y54xwLb3zLozpU=" crossorigin="anonymous"></script>
+
+</footer>
+
+
+    </div>
+    
+  <script src="/js/main.min.99abe30f7fb05785a480d405ee1665ebd520cec6bbadffe966b7737e103675b8.js" integrity="sha256-mavjD3&#43;wV4WkgNQF7hZl69Ugzsa7rf/pZrdzfhA2dbg=" crossorigin="anonymous"></script>
+<script src='/js/prism.js'></script>
+<script src='/js/tabpane-persist.js'></script>
+
+  </body>
+</html>
