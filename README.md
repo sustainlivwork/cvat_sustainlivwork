@@ -103,8 +103,7 @@ this stack, and deploys the functions to Nuclio:
 ```bash
 cd ~/src/sustainlivwork/cvat_models
 scripts/launch.sh --models pigseg                       # pig instance masks
-PIGKP_CHECKPOINT=/path/to/checkpoint_last.pth \
-    scripts/launch.sh --models pigseg,pigkeypoints      # + pig keypoint skeletons
+scripts/launch.sh --models pigseg,pigkeypoints          # + pig keypoint skeletons
 scripts/launch.sh --models pigseg --functions-only      # stack already up: deploy only
 scripts/stop.sh --models pigseg                         # undeploy, CVAT keeps running
 scripts/stop.sh --stack                                 # undeploy all and stop CVAT (data kept)
