@@ -80,3 +80,8 @@ cvat-ui/dist
 **/!.yarn/releases
 **/!.yarn/sdks
 **/!.yarn/versions
+
+# Staged by the cvat_models repo's scripts/launch.sh: function sources plus
+# multi-GB weights, and the compose overlay serverless.sh picks up.
+/serverless/cvdlink/
+/docker-compose.models.yml

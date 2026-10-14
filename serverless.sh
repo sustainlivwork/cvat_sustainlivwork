@@ -9,7 +9,9 @@
 #
 # No AI models are deployed by this script. The serverless subsystem comes up
 # empty: CVAT's semi-automatic tools appear in the UI but list no models until
-# you deploy one (see README, "Semi-automatic annotation").
+# you deploy one (see README, "Semi-automatic annotation"). Deploying is done
+# from the cvat_models repo; this script only picks up its compose overlay once
+# that repo has staged it here.
 #
 # Without this script (plain CVAT, no AI subsystem):
 #   docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build
@@ -23,6 +25,12 @@ FILES=(
 # Include the dev overlay if present so this fork's branded images are built
 # from source rather than pulled as stock CVAT.
 [[ -f docker-compose.dev.yml ]] && FILES+=(-f docker-compose.dev.yml)
+# Include the cvat_models overlay once it has been staged here (cvat_models'
+# scripts/launch.sh copies it in). It bind-mounts ./serverless into the Nuclio
+# dashboard so nuctl can read the staged function sources, and pins the build
+# platform to amd64 on arm64 hosts. Absent until you stage a model, so plain
+# serverless launches are unaffected.
+[[ -f docker-compose.models.yml ]] && FILES+=(-f docker-compose.models.yml)
 
 case "${1:-}" in
   logs)

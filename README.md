@@ -83,10 +83,52 @@ annotation UI.
 
 **No models are deployed by default.** The subsystem comes up empty: the AI-tools menu will show an
 empty model list until you deploy a function. This is intentional — model images are large (several
-GB each) and the interactive segmentation models expect a CUDA GPU, so deploying one is a deliberate,
-separate step for when you have suitable hardware. To deploy a model, use CVAT's own tooling
-(`serverless/deploy_gpu.sh` on a CUDA host, or `serverless/deploy_cpu.sh` for slow CPU inference) —
-see the [upstream serverless tutorial](https://docs.cvat.ai/docs/manual/advanced/serverless-tutorial/).
+GB each), so deploying one is a deliberate, separate step.
+
+### Launching with the project's models
+
+The project's models (PigSeg, PigKeyPoints, MedSAM2, MedSAM3, SAM3) live in the
+[cvat_models](https://github.com/sustainlivwork/cvat_models) repository, which deploys them into
+this checkout. Clone it next to this one:
+
+```bash
+mkdir -p ~/src/sustainlivwork && cd ~/src/sustainlivwork
+git clone https://github.com/sustainlivwork/cvat_sustainlivwork.git cvat
+git clone https://github.com/sustainlivwork/cvat_models.git
+```
+
+Then launch from `cvat_models`. One command stages the functions and weights here, builds and starts
+this stack, and deploys the functions to Nuclio:
+
+```bash
+cd ~/src/sustainlivwork/cvat_models
+scripts/launch.sh --models pigseg                       # pig instance masks
+PIGKP_CHECKPOINT=/path/to/checkpoint_last.pth \
+    scripts/launch.sh --models pigseg,pigkeypoints      # + pig keypoint skeletons
+scripts/launch.sh --models pigseg --functions-only      # stack already up: deploy only
+scripts/stop.sh --models pigseg                         # undeploy, CVAT keeps running
+scripts/stop.sh --stack                                 # undeploy all and stop CVAT (data kept)
+```
+
+The first run builds CVAT and the function images (30–60 minutes); later runs reuse them. Create
+an administrator as in [Quick start](#quick-start), then sign in at <http://localhost:8080>.
+Detectors (PigSeg, PigKeyPoints) are under *Actions → Automatic annotation* on a task or
+*AI Tools → Detectors* in a job; interactors (MedSAM2/3, SAM3) under *AI Tools → Interactors*. Which
+labels a task needs, the weights and the GPU builds are described in the
+[cvat_models README](https://github.com/sustainlivwork/cvat_models#readme).
+
+`launch.sh` copies its `docker-compose.models.yml` overlay here, and `serverless.sh` includes it
+when present: it bind-mounts `./serverless` into the Nuclio dashboard so `nuctl` can read the staged
+functions under `serverless/cvdlink/`, and pins function builds to `amd64` on ARM hosts. Both the
+overlay and `serverless/cvdlink/` are gitignored. After a launch, `./serverless.sh up`/`down` keep
+working as usual with the overlay applied.
+
+Model images are 3–25 GB each and Docker Desktop's disk image grows with every build. If the host
+disk fills up, Docker stops its engine and CVAT goes down with it; check with `docker system df`.
+
+For other models, CVAT's own tooling still works (`serverless/deploy_gpu.sh` /
+`serverless/deploy_cpu.sh`) — see the
+[upstream serverless tutorial](https://docs.cvat.ai/docs/manual/advanced/serverless-tutorial/).
 
 > **Apple Silicon note:** Nuclio's dashboard image is `amd64`-only, so on an ARM Mac it runs under
 > emulation — it starts, just slowly, and Docker may warn about the platform mismatch. On an
@@ -193,7 +235,7 @@ occasional conflicts in the files we touched: the CI workflows, the docs pages w
 | CI | Jobs requiring credentials this repo doesn't have are removed: Docker Hub publish, S3/Allure reports, Codecov, PyPI, and cvat.ai cross-repo triggers. Build, unit / REST / e2e / Helm tests and linters are all retained. |
 | Branding | SustAInLivWork logo in the app header, on the login page, and as the favicon. Light login page. |
 | Accounts | Public self-registration is disabled: the `/api/auth/register` endpoint is not mounted (`cvat/apps/iam/urls.py`), and the UI hides the "Create an account" page automatically because it checks the server schema for that endpoint. Accounts are created by administrators (Django admin panel or `createsuperuser`). Upstream unit tests for registration are skipped; upstream REST/e2e suites that self-register test users will fail. |
-| Launcher | `serverless.sh` added as the default launcher: `docker compose` with the base file, the dev overlay, and the Nuclio serverless overlay. Upstream leaves you to compose the overlays by hand. |
+| Launcher | `serverless.sh` added as the default launcher: `docker compose` with the base file, the dev overlay, and the Nuclio serverless overlay. Upstream leaves you to compose the overlays by hand. It also includes `docker-compose.models.yml` when [cvat_models](https://github.com/sustainlivwork/cvat_models) has staged it. |
 | Proxy / TLS | A Traefik middleware (`cvat-xfp`) forces `X-Forwarded-Proto` to `CVAT_PUBLIC_SCHEME` (default `http`), so with `CVAT_PUBLIC_SCHEME=https` annotation (TUS) uploads work behind a TLS-terminating proxy or Cloudflare Tunnel ([cvat-ai/cvat#4843](https://github.com/cvat-ai/cvat/issues/4843)). Peer-IP trust was tested and does not work under Docker Desktop's source-address rewriting. |
 
 ## Licence & attribution
